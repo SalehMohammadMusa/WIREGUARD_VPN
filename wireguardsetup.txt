@@ -1,0 +1,16 @@
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:wireguard/wireguard
+sudo apt install wireguard
+wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey
+cd /etc/wireguard
+umask 077
+wg genkey | sudo tee privatekey | wg pubkey | sudo tee publickey
+
+cd /etc/sysctl.conf
+
+net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1
+
+sudo systemctl enable wg-quick@wg0
+sudo systemctl start wg-quick@wg0

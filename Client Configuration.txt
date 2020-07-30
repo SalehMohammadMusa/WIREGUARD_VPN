@@ -1,0 +1,11 @@
+[Interface]
+PrivateKey = <Private Key>
+Address = 192.168.9.4/24
+#SaveConfig = true
+
+# server
+[Peer]
+PublicKey = <Server Public key>
+Endpoint = <Server Public IP>:51820
+AllowedIPs = 0.0.0.0/0, ::/0
+PersistentKeepalive = 25
